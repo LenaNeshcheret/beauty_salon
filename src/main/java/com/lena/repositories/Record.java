@@ -9,6 +9,12 @@ public class Record {
     private Client client;
     private Master master;
 
+    public Record(LocalDateTime date, Client client, Master master) {
+        this.date = date;
+        this.client = client;
+        this.master = master;
+    }
+
     public Record() {
     }
 

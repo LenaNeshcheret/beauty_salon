@@ -21,7 +21,7 @@ public class ClientServlet extends HttpServlet {
         ClientService clientService = new ClientServiceImpl();
         Client client = null;
         try {
-            client = clientService.findClient(firstName, phone);
+            client = clientService.findClientByNameAndPhone(firstName, phone);
         } catch (Exception e) {
             e.printStackTrace();
         }

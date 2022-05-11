@@ -4,13 +4,17 @@ import java.time.LocalDateTime;
 
 
 public abstract class User {
-    private int id;
-    private String name;
-    private int phone;
-    private String address;
-    private String email;
-    private LocalDateTime birthday;
-    private Discount discount;
+    protected int id;
+    protected String name;
+    protected int phone;
+    protected String address;
+    protected String email;
+    protected LocalDateTime birthday;
+    protected Discount discount;
+    protected String login;
+    protected String password;
+
+
 
     @Override
     public String toString() {
@@ -22,6 +26,8 @@ public abstract class User {
                 ", email='" + email + '\'' +
                 ", birthday=" + birthday +
                 ", discount=" + discount +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -29,17 +35,21 @@ public abstract class User {
 
     }
 
-    public User(String name, int phone, String adress, String email, LocalDateTime birthday, Discount discount) {
+    public User(String name, int phone, String adress, String email, LocalDateTime birthday, Discount discount,
+                String login, String password) {
         this.name = name;
         this.phone = phone;
         this.address = adress;
         this.email = email;
         this.birthday = birthday;
         this.discount = discount;
+        this.login=login;
+        this.password = password;
     }
 
-    public User(int id, String name, int phone, String adress, String email, LocalDateTime birthday, Discount discount) {
-        this(name, phone, adress, email, birthday, discount);
+    public User(int id, String name, int phone, String adress, String email, LocalDateTime birthday, Discount discount,
+                String login, String password) {
+        this(name, phone, adress, email, birthday, discount, login, password);
         this.id = id;
     }
 
@@ -101,5 +111,20 @@ public abstract class User {
         this.phone = phone;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
 

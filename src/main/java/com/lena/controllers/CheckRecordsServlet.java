@@ -1,12 +1,11 @@
 package com.lena.controllers;
 
 
-import com.lena.repositories.Client;
 import com.lena.repositories.Record;
-import com.lena.services.ClientService;
-import com.lena.services.ClientServiceImpl;
 import com.lena.services.RecordService;
 import com.lena.services.RecordServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,56 +41,33 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/checkRecords")
 public class CheckRecordsServlet extends HttpServlet {
+    private static Logger log = LoggerFactory.getLogger(CheckRecordsServlet.class);
+
 
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         String startDate = httpServletRequest.getParameter("start_date");
-        String startTime = httpServletRequest.getParameter("start_time");
-        String startDateTime = startDate + "T" + startTime;
+        if(startDate.isEmpty()){
+            throw new IllegalArgumentException("Start date do not empty");
+        }
+        String startDateTime = DateValidatorUtils.validateDateTime(httpServletRequest, "start_date", "start_time", "07:00");
+        String endDateTime = DateValidatorUtils.validateDateTime(httpServletRequest, "end_date", "end_time", "20:00");
 
         String endDate = httpServletRequest.getParameter("end_date");
-        String endTime = httpServletRequest.getParameter("end_time");
 
-
-        if ((endDate == null || endDate.isEmpty())) {
-            processUniqueRecord(httpServletRequest, httpServletResponse, startDateTime);
-        } else {
-            endTime = (endTime == null || endTime.isEmpty())
-                    ? ""
-                    : "T" + endTime;
-            String endDateTime = endDate + endTime;
-            processListRecords(httpServletRequest, httpServletResponse, startDateTime, endDateTime);
-        }
-
-
-    }
-
-    private void processListRecords(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, String startDateTime, String endDateTime) throws ServletException, IOException {
         List<Record> listRecords = new ArrayList<>();
         RecordService recordService = new RecordServiceImpl();
+
         try {
-            listRecords = recordService.getRecords(startDateTime, endDateTime);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            if ((endDate == null || endDate.isEmpty())) {
+                LocalDateTime parsed = LocalDateTime.parse(startDateTime);
+                listRecords  = recordService.getRecord(parsed);
+            }else {
+                listRecords = recordService.getRecords(startDateTime, endDateTime);
+            }
+        } catch (SQLException e){
+            log.error("Error during fetching records list");
         }
-        System.out.println(listRecords);
         httpServletRequest.setAttribute("listRecords", listRecords);
-//todo handle listRecords in makeRecords.jsp
         httpServletRequest.getRequestDispatcher("WEB-INF/views/listRecords.jsp").forward(httpServletRequest, httpServletResponse);
-
-    }
-
-    private void processUniqueRecord(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, String startDateTime) throws ServletException, IOException {
-        RecordService recordService = new RecordServiceImpl();
-        Record record = null;
-        try {
-            LocalDateTime parsed = LocalDateTime.parse(startDateTime);
-            System.out.println("parsed" + parsed);
-            record = recordService.getRecord(parsed);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        httpServletRequest.setAttribute("record", record);
-
-        httpServletRequest.getRequestDispatcher("WEB-INF/views/makeRecords.jsp").forward(httpServletRequest, httpServletResponse);
     }
 }

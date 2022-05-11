@@ -4,7 +4,7 @@
     <!-- head definitions go here -->
     </head>
     <body>
-        <h1>Hello from index html</h1>
+        <h1>client.jsp</h1>
 
         <table clas border="5" >
             <tr>
@@ -23,7 +23,6 @@
             </tr>
         </table>
 
-        ${name1}
 <!-- the content goes here -->
     </body>
 </html>

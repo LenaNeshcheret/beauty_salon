@@ -10,38 +10,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
-//@WebServlet(urlPatterns = "/checkRecords")
+@WebServlet(urlPatterns = "/checkAvailableRecords")
 public class CheckAvailableRecordsServlet extends HttpServlet {
 
-//    protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-//        String startDate = httpServletRequest.getParameter("start_date");
-//        String startTime = httpServletRequest.getParameter("start_time");
-//        String endDate = httpServletRequest.getParameter("end_date");
-//        String endTime = httpServletRequest.getParameter("end_time");
-//
-//        String startDateTime = startDate + "T" + startTime;
-//        String endDateTime = endDate + "T" + endTime;
-//
-//        System.out.println(startDateTime);
-//        System.out.println(endDateTime);
-//
-//
-//        RecordService recordService = new RecordServiceImpl();
-//        Record record = null;
-//        try {
-//            LocalDateTime parsed = LocalDateTime.parse(startDateTime);
-//            System.out.println("parsed" + parsed);
-//            record = recordService.getRecords(parsed);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(record);
-//        httpServletRequest.setAttribute("record", record);
-//
-//        httpServletRequest.getRequestDispatcher("WEB-INF/views/makeRecords.jsp").forward(httpServletRequest, httpServletResponse);
-//
-//    }
+    protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        String startDateTime = DateValidatorUtils.validateDateTime(httpServletRequest, "start_date", "start_time", "07:00");
+        String endDateTime = DateValidatorUtils.validateDateTime(httpServletRequest, "end_date", "end_time", "20:00");
+
+        List<LocalDateTime> listAvailableRecords = new ArrayList<>();
+        RecordService recordService = new RecordServiceImpl();
+        listAvailableRecords = recordService.getAvailableSlotRecords(LocalDateTime.parse(startDateTime), LocalDateTime.parse(endDateTime));
+//        System.out.println(listAvailableRecords);
+        httpServletRequest.setAttribute("listAvailableRecords", listAvailableRecords);
+
+        httpServletRequest.getRequestDispatcher("WEB-INF/views/listAvailableRecords.jsp").forward(httpServletRequest, httpServletResponse);
+    }
 }
