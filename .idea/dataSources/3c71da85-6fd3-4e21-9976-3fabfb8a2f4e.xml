@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="beauty_salon@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.9">
+    <root id="1">
+      <ServerVersion>14.1</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="beauty_salon">
+      <ObjectId>16394</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>13754</ObjectId>
+      <Comment>default administrative connection database</Comment>
+    </database>
+    <role id="4" parent="1" name="pg_database_owner">
+      <ObjectId>6171</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="5" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_data">
+      <ObjectId>6181</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="9" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="10" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="11" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="12" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="13" parent="1" name="pg_write_all_data">
+      <ObjectId>6182</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="14" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="15" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="16" parent="2" name="information_schema">
+      <ObjectId>13388</ObjectId>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="17" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="18" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="19" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <object-type id="20" parent="16" name="cardinal_number">
+      <ObjectId>13402</ObjectId>
+      <StateNumber>545</StateNumber>
+      <SubKind>domain</SubKind>
+      <SubCategory>numeric</SubCategory>
+      <Definition>integer</Definition>
+    </object-type>
+    <object-type id="21" parent="16" name="character_data">
+      <ObjectId>13405</ObjectId>
+      <StateNumber>546</StateNumber>
+      <SubKind>domain</SubKind>
+      <SubCategory>string</SubCategory>
+      <Definition>varchar</Definition>
+    </object-type>
+    <object-type id="22" parent="16" name="sql_identifier">
+      <ObjectId>13407</ObjectId>
+      <StateNumber>547</StateNumber>
+      <SubKind>domain</SubKind>
+      <SubCategory>string</SubCategory>
+      <Definition>name</Definition>
+    </object-type>
+    <object-type id="23" parent="16" name="time_stamp">
+      <ObjectId>13413</ObjectId>
+      <StateNumber>550</StateNumber>
+      <SubKind>domain</SubKind>
+      <SubCategory>date-time</SubCategory>
+      <Definition>timestamp(2) with time zone</Definition>
+      <DefaultExpression>CURRENT_TIMESTAMP(2)</DefaultExpression>
+    </object-type>
+    <object-type id="24" parent="16" name="yes_or_no">
+      <ObjectId>13415</ObjectId>
+      <StateNumber>551</StateNumber>
+      <SubKind>domain</SubKind>
+      <SubCategory>string</SubCategory>
+      <Definition>varchar(3)</Definition>
+    </object-type>
+    <sequence id="25" parent="19" name="admins_id_seq">
+      <ObjectId>16434</ObjectId>
+      <StateNumber>739</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="26" parent="19" name="clients_id_seq">
+      <ObjectId>16402</ObjectId>
+      <StateNumber>737</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="27" parent="19" name="discounts_id_seq">
+      <ObjectId>16395</ObjectId>
+      <StateNumber>736</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="28" parent="19" name="feedbacks_id_seq">
+      <ObjectId>16467</ObjectId>
+      <StateNumber>741</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="29" parent="19" name="masters_id_seq">
+      <ObjectId>16418</ObjectId>
+      <StateNumber>738</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="30" parent="19" name="records_id_seq">
+      <ObjectId>16500</ObjectId>
+      <StateNumber>754</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+  </database-model>
+</dataSource>

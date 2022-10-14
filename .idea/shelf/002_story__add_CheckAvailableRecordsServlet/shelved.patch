@@ -1,0 +1,61 @@
+Index: src/main/java/com/lena/services/MasterRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.lena.services;\n\nimport com.lena.repositories.Client;\nimport com.lena.repositories.Master;\nimport com.lena.util.SortOrder;\n\nimport java.math.BigDecimal;\nimport java.sql.SQLException;\nimport java.util.List;\n\npublic interface MasterRepository {\n\n    Master findMaster(String name) throws SQLException;\n\n    void createMaster(String name, int phone, String address, String email, int discount,  String profession,\n                      int payment, int rating ) throws SQLException;\n\n    boolean updateRating(int masterId, BigDecimal masterRating) throws SQLException;\n\n    List<Master> getListMasters(SortOrder sortOrder) throws SQLException;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/lena/services/MasterRepository.java	(date 1652279617000)
++++ src/main/java/com/lena/services/MasterRepository.java	(date 1652280520999)
+@@ -15,7 +15,7 @@
+     void createMaster(String name, int phone, String address, String email, int discount,  String profession,
+                       int payment, int rating ) throws SQLException;
+ 
+-    boolean updateRating(int masterId, BigDecimal masterRating) throws SQLException;
++    boolean updateRating(int masterId, BigDecimal masterRating) throws RuntimeException;
+ 
+     List<Master> getListMasters(SortOrder sortOrder) throws SQLException;
+ }
+Index: src/main/java/com/lena/services/MasterServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.lena.services;\n\n\nimport com.lena.repositories.Master;\nimport com.lena.repositories.MasterRepositoryImpl;\nimport com.lena.util.SortOrder;\n\nimport java.math.BigDecimal;\nimport java.sql.SQLException;\nimport java.util.List;\n\npublic class MasterServiceImpl implements MasterService {\n    MasterRepository masterRepository = new MasterRepositoryImpl();\n\n    @Override\n    public void createMaster(String name, int phone, String adress, String email, int discount, String profession, int payment, int rating) throws SQLException {\n        masterRepository.createMaster(name, phone, adress, email, discount, profession, payment, rating);\n        return;\n    }\n\n\n    @Override\n    public Master findMaster(String name) {\n        Master masterResult = null;\n        try {\n            masterResult = masterRepository.findMaster(name);\n        } catch (SQLException e) {\n            e.printStackTrace();\n        }\n        return masterResult;\n    }\n\n    @Override\n    public boolean updateRating(int masterId, BigDecimal masterRating)  throws SQLException {\n        return masterRepository.updateRating(masterId, masterRating);\n    }\n\n    @Override\n    public List<Master> getListMasters(SortOrder sortOrder) throws SQLException {\n\n        return masterRepository.getListMasters(sortOrder);\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/lena/services/MasterServiceImpl.java	(date 1652279617000)
++++ src/main/java/com/lena/services/MasterServiceImpl.java	(date 1652280520929)
+@@ -31,7 +31,7 @@
+     }
+ 
+     @Override
+-    public boolean updateRating(int masterId, BigDecimal masterRating)  throws SQLException {
++    public boolean updateRating(int masterId, BigDecimal masterRating)  {
+         return masterRepository.updateRating(masterId, masterRating);
+     }
+ 
+Index: src/main/java/com/lena/repositories/MasterRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.lena.repositories;\n\nimport com.lena.PostgresConnection;\nimport com.lena.services.MasterRepository;\nimport com.lena.util.SortOrder;\n\nimport java.math.BigDecimal;\nimport java.sql.Connection;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\nimport java.sql.Statement;\nimport java.util.ArrayList;\nimport java.util.List;\n\n\npublic class MasterRepositoryImpl implements MasterRepository {\n\n    public Master findMaster(String name) throws SQLException {\n        Connection connection = PostgresConnection.getConnection();\n        Statement statement = connection.createStatement();\n        ResultSet resultSet = statement.executeQuery(\"select d.id, d.discount_card, d.new_year, d. birth, \" +\n                \"d.march_8, m.id, m.name,  m.phone,  m.adress, m.email, m.profession, m.payment, m.rating  \" +\n                \"from discounts d join masters m on m.discount = d.id where name='\" + name + \"';\");\n        Master master = new Master();\n        Discount discount = new Discount();\n        while (resultSet.next()) {\n            discount.setId(resultSet.getInt(1));\n            discount.setAccumulateCard(resultSet.getInt(2));\n            discount.setNewYearDiscount(resultSet.getInt(3));\n            discount.setHappyBirthdayDiscount(resultSet.getInt(4));\n            discount.setMarch8Discount(resultSet.getInt(5));\n            master.setId(resultSet.getInt(6));\n            master.setName(resultSet.getString(7));\n            master.setPhone(resultSet.getInt(8));\n            master.setAddress(resultSet.getString(9));\n            master.setEmail(resultSet.getString(10));\n            master.setProfession(resultSet.getString(11));\n            master.setPayment(resultSet.getInt(12));\n            master.setRating(resultSet.getBigDecimal(13));\n            master.setDiscount(discount);\n//       client.setBirthday(resultSet.get(8));\n        }\n        return master;\n    }\n\n    public void createMaster(String name, int phone, String adress, String email, int discount, String profession,\n                             int payment, int rating) throws SQLException {\n        Connection connection = PostgresConnection.getConnection();\n        Statement statement = connection.createStatement();\n        String sql = \"insert into masters (name,  phone,  adress, email,   discount,  profession, payment, rating)\" +\n                \" VALUES(\" + name + \",\" + phone + \",\" + adress + \",\" + email + \",\" + discount + \",\" + profession + \",\"\n                + payment + \",\" + rating + \");\";\n        statement.executeUpdate(sql);\n    }\n\n    @Override\n    public boolean updateRating(int masterId, BigDecimal masterRating) throws SQLException {\n        Connection connection = PostgresConnection.getConnection();\n        Statement statement = connection.createStatement();\n\n        String sql = String.format(\"update masters set rating=%s where id=%s;\", masterRating, masterId);\n        return statement.executeUpdate(sql) == 1;\n    }\n\n    @Override\n    public List<Master> getListMasters(SortOrder sortOrder) throws SQLException {\n        Connection connection = PostgresConnection.getConnection();\n        Statement statement = connection.createStatement();\n        String sql = String.format(\"select name, rating from masters order by rating %s;\", sortOrder);\n        ResultSet resultSet = statement.executeQuery(sql);\n        List<Master> masterList = new ArrayList<>();\n        while (resultSet.next()) {\n            Master master  = new Master.Builder()\n                    .withName(resultSet.getString(1))\n                    .withRating(resultSet.getBigDecimal(2))\n                    .build();\n            masterList.add(master);\n        }\n        System.out.println(masterList);\n        return masterList;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/lena/repositories/MasterRepositoryImpl.java	(date 1652279617000)
++++ src/main/java/com/lena/repositories/MasterRepositoryImpl.java	(date 1652280520885)
+@@ -54,12 +54,12 @@
+     }
+ 
+     @Override
+-    public boolean updateRating(int masterId, BigDecimal masterRating) throws SQLException {
++    public boolean updateRating(int masterId, BigDecimal masterRating) throws RuntimeException  {
+         Connection connection = PostgresConnection.getConnection();
+-        Statement statement = connection.createStatement();
++//        Statement statement = connection.createStatement();
+ 
+         String sql = String.format("update masters set rating=%s where id=%s;", masterRating, masterId);
+-        return statement.executeUpdate(sql) == 1;
++//        return statement.executeUpdate(sql) == 1;
+     }
+ 
+     @Override

@@ -4,6 +4,8 @@ import com.lena.repositories.Client;
 import com.lena.repositories.Master;
 import com.lena.util.SortOrder;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,4 +20,9 @@ public interface MasterRepository {
     boolean updateRating(int masterId, BigDecimal masterRating) throws SQLException;
 
     List<Master> getListMasters(SortOrder sortOrder) throws SQLException;
+
+
+
+
+
 }
