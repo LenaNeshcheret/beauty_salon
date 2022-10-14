@@ -45,7 +45,6 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public Record createRecord(LocalDateTime date, String nameClient, int phoneClient, String nameMaster) throws BusyTimeRecordException {
-
         ClientServiceImpl clientService = new ClientServiceImpl();
         Client client = clientService.findClientByNameAndPhone(nameClient, phoneClient);
         MasterServiceImpl masterService = new MasterServiceImpl();
