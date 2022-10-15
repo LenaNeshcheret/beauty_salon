@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17f33033-b87c-4dc5-b808-e10e5f383af7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lena/repositories/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lena/repositories/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lena/services/MasterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lena/services/MasterRepository.java" afterDir="false" />
+    <list default="true" id="17f33033-b87c-4dc5-b808-e10e5f383af7" name="Default" comment="002 story: add CheckAvailableRecordsServlet">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,24 +85,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/repositories/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/filter/LoginFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CancelRecordServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/controllers/CancelRecordServlet.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -159,13 +140,31 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="checkRecords.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkRecords.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkRecords.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="2">
               <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecordServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+              <folding>
+                <element signature="e#1971#1972#0" expanded="true" />
+                <element signature="e#2034#2035#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -231,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lena/controllers/DateValidatorUtils.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/lena/services/RecordRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lena/services/RecordService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/listRecords.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/lena/controllers/FeedbackServlet.java" />
@@ -273,6 +271,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lena/services/MasterRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lena/services/MasterServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkRecords.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -308,7 +307,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-25" />
     <option name="y" value="-22" />
     <option name="width" value="800" />
@@ -374,67 +373,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="filter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="repositories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="beautySalonJdbc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beautySalonJdbc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="lena" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -703,7 +642,7 @@
       <workItem from="1665237155417" duration="2089000" />
       <workItem from="1665351939376" duration="4182000" />
       <workItem from="1665408913473" duration="5236000" />
-      <workItem from="1665665781608" duration="645000" />
+      <workItem from="1665665781608" duration="14268000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1642840085436</created>
@@ -737,7 +676,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="531450000" />
+    <option name="totallyTimeSpent" value="545073000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,14 +691,14 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50192803" side_tool="true" visible="true" weight="0.23489933" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.23264782" side_tool="true" weight="0.34630874" />
       <window_info anchor="bottom" id="Application Servers" order="11" weight="0.32885906" />
-      <window_info anchor="right" id="Maven Projects" order="10" weight="0.0" />
+      <window_info anchor="right" id="Maven Projects" order="10" weight="0.17609255" />
       <window_info anchor="right" id="CDI" order="2" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="4" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.32969153" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
       <window_info anchor="right" id="JSF" order="0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
@@ -771,8 +710,8 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32885906" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.4604027" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.6336761" weight="0.295302" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49807197" visible="true" weight="0.23489933" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.6330334" weight="0.295302" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.76735216" visible="true" weight="0.34630874" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24550128" />
       <window_info anchor="right" id="Bean Validation" order="1" weight="0.32969153" />
       <window_info id="Web" order="3" side_tool="true" />
@@ -864,18 +803,6 @@
           <line>51</line>
           <properties />
           <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lena/services/ClientServiceImpl.java</url>
@@ -1007,13 +934,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/AbstractStringBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/StringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -1212,17 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding>
-            <element signature="e#1971#1972#0" expanded="true" />
-            <element signature="e#2034#2035#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/services/FeedbackRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1372,8 +1281,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkRecords.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="2">
           <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lena/services/RecordServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#2034#2035#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
